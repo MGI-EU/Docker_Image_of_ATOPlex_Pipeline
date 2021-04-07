@@ -8,7 +8,7 @@ The latest version will be automatically followed when building the image.
 
 This pipeline could accurately and efficiently identify SARS-CoV-2 reads from multiplex PCR sequencing data, and report the infection status of sequencing samples with positive/negative/uncertain label. The pipeline could also get the variant information such as SNP/INDEL and generate the consensus sequence. (From: [SARS-CoV-2_Multi-PCR_v1.0](https://github.com/MGI-tech-bioinformatics/SARS-CoV-2_Multi-PCR_v1.0))
 
-![Image](https://github.com/MGI-EU/Docker_Image_of_ATOPlex_Pipeline/blob/master/assets/Pipeline.png)
+![Image](https://github.com/MGI-EU/Docker_Image_of_ATOPlex_Pipeline/blob/main/assets/Pipeline.png)
 
 ## Requirements
 

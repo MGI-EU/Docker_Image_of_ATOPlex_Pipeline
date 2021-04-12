@@ -51,7 +51,7 @@ Users should install Docker and obtain the permission to build dockerfile before
 ```shell
 git clone https://github.com/MGI-EU/Docker_Image_of_ATOPlex_Pipeline.git
 cd Docker_Image_of_ATOPlex_Pipeline
-docker build -t ATOPlex:v1.0 .
+docker build -t cov2multipcr:v1.0 .
 ```
 
 ## Usage
@@ -78,17 +78,19 @@ The example of `input.json` and `sample.list` files can be found in `config` fol
   - R_lib, path to R library.
   - tools(bwa,samtools....), path to this tool.
 
-- In `sample.list` file, the data path should be the sample folder location in docker environment, for example (tab-delimited):
+- In `sample.list` file, the data path should be the sample folder location in docker environment. The sample file should end with `_<barcode>_1.fq.gz` and `_<barcode>_2.fq.gz`, or `_<barcode>.fq.gz`. Here is `sample.list` example (tab-delimited):
 
   ```Text
-  Sample1	<barcode1>	/root/data/sample1_Data_Folder
-  Sample2	<barcode2>	/root/data/Sample2_Data_Folder
+  Sample1	<barcode1>	/root/data/sample1_Data_Folder/
+  Sample2	<barcode2>	/root/data/Sample2_Data_Folder/
   ```
+
+**Note that different samples must have different data path or barcode.**
 
 ### Step 2. Enter docker env
 
 ```shell
-sudo docker run -it -v your/data/path:/root/data -v your/config/path:docker/config/path -v your/result/path:docker/result/path ATOPlex:v1.0
+sudo docker run -it -v your/data/path/:/root/data/ -v your/config/path/:/root/config/ -v your/result/path/:/root/result/ cov2multipcr:v1.0
 ```
 
 ### Step 3. Run analysis
@@ -133,6 +135,12 @@ your/result/path/*/05.Stat/*.html
 ```
 
 ## Updates
+
+April 12th, 2021
+
+1. Update `input.json`. Use fixed file path.
+2. Debug `Dockerfile`.
+3. Update `README.md`.
 
 April 6th, 2021
 

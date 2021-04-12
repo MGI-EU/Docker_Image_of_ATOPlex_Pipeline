@@ -50,6 +50,7 @@ RUN cd /root/repos && git clone https://github.com/MGI-tech-bioinformatics/SARS-
 # htslib (tabix bgzip)
 RUN apt-get install -qy libcurl4-openssl-dev
 RUN cd /root/repos && git clone https://github.com/samtools/htslib.git
+RUN cd /root/repos/htslib && git submodule update --init --recursive
 RUN cd /root/repos/htslib && autoheader && autoconf && ./configure && make && make install
 RUN cp /root/repos/htslib/bgzip /root/repos/SARS-CoV-2_Multi-PCR_v1.0/tools/.
 RUN cp /root/repos/htslib/tabix /root/repos/SARS-CoV-2_Multi-PCR_v1.0/tools/.

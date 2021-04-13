@@ -98,9 +98,9 @@ sudo docker run -it -v your/data/path/:/root/data/ -v your/config/path/:/root/co
 After starting and entering docker environment, run follwing commands to do analysis.
 
 ```shell
-python3 /root/repos/SARS-CoV-2_Multi-PCR_v1.0/bin/Main_SARS-CoV-2.py -i docker/config/path/input.json
-cd path/to/workdir
-nohup sh main.sh &
+python3 /root/repos/SARS-CoV-2_Multi-PCR_v1.0/bin/Main_SARS-CoV-2.py -i /root/config/input.json
+#cd /root/result
+nohup sh /root/result/main.sh &
 ```
 
 ### Step 4. Collect results

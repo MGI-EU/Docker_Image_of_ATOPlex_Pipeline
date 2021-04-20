@@ -56,11 +56,25 @@ docker build -t cov2multipcr:v1.0 .
 
 ## Usage
 
-### Resource
+### Hardware Requirement
 
-Required minimum memory: 6g
+#### Memory Requirement
 
-### Step 1. Prepare `input.json` and `sample.list` files
+Designed required minimum memory: 6GB
+
+The actual necessary memory for each sample is 2GB for one sample with 3.2M PE100 reads. If users want higher degree of parallelism, they can modify the `--mem` parameter in `main.sh` (see usage [Step3](#step-3-run-analysis)) for pipeline step2 and step6.
+
+#### Threads and Parallelism
+
+The pipeline comprises two levels of parallelism.
+
+The first level is sample-level-parallelism, controlled by a customized Perl script. Users can provide any number of sample in the smaple list. The script will help manage the analysis automatically.
+
+The second level is tool-level-parallelism, controlled by the parameters of each integrated software, such as BWA, samtools, mosdepth, etc. The thread number has been set to 3, a fixed value. Users can modify the generated shell script for each pipeline step, change the value according to their needs.
+
+### Operation
+
+#### Step 1. Prepare `input.json` and `sample.list` files
 
 The example of `input.json` and `sample.list` files can be found in `config` folder in this repo.
 
@@ -87,13 +101,13 @@ The example of `input.json` and `sample.list` files can be found in `config` fol
 
 **Note that different samples must have different data path or barcode.**
 
-### Step 2. Enter docker env
+#### Step 2. Enter docker env
 
 ```shell
 sudo docker run -it -v your/data/path/:/root/data/ -v your/config/path/:/root/config/ -v your/result/path/:/root/result/ cov2multipcr:v1.0
 ```
 
-### Step 3. Run analysis
+#### Step 3. Run analysis
 
 After starting and entering docker environment, run follwing commands to do analysis.
 
@@ -103,7 +117,7 @@ python3 /root/repos/SARS-CoV-2_Multi-PCR_v1.0/bin/Main_SARS-CoV-2.py -i /root/co
 nohup sh /root/result/main.sh &
 ```
 
-### Step 4. Collect results
+#### Step 4. Collect results
 
 (Note that we've deleted large output and sensitive files from example in this repo.)
 
@@ -146,7 +160,17 @@ April 6th, 2021
 
 1. Create repository.
 
+## Update plan
+
+1. Expose memory and thread parameters.
+2. Remove dependency on original pipeline repo in Dockerfile.
+3. New downstream analysis function.
+
 ## FAQ
+
+1. Where can I obtain example data ?
+  
+    The example results are generated using real data. For the reason of data security, we cannot publish our real data as example. If users need samples for test, please leave us an issue or contact us directly. Our email: <MGI_BIT_EU@mgi-tech.com>.
 
 ## Reference
 

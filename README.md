@@ -170,7 +170,8 @@ April 6th, 2021
 
 1. Where can I obtain example data ?
   
-    The example results are generated using real data. For the reason of data security, we cannot publish our real data as example. If users need samples for test, please leave us an issue or contact us directly. Our email: <MGI_BIT_EU@mgi-tech.com>.
+    The example results are generated using real data. For the reason of data security, we cannot publish our real data as example. If users need samples for test, please leave us an issue or contact us directly.
+    Our email: <MGI_BIT_EU@mgi-tech.com>.
 
 ## Reference
 

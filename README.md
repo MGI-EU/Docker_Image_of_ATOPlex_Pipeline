@@ -1,6 +1,6 @@
 # Docker Image of ATOPlex Pipeline
 
-This image has been tested by MGI EU team on 2021-04-06 based on the pipeline with the original distribution [SARS-CoV-2_Multi-PCR_v1.0](https://github.com/MGI-tech-bioinformatics/SARS-CoV-2_Multi-PCR_v1.0), version 1.0 .
+This image has been tested by MGI EU team on 2021-05-20 based on the pipeline with the original distribution [SARS-CoV-2_Multi-PCR_v1.0](https://github.com/MGI-tech-bioinformatics/SARS-CoV-2_Multi-PCR_v1.0), version 1.0 .
 
 The latest version will be automatically followed when building the image.
 
@@ -26,21 +26,21 @@ Normally, these requirements will be automatically installed after building dock
   - Packages: Cairo
 
 - Softwares for data quality control:
-  - seqtk v1.2 (<https://github.com/lh3/seqtk>)
+  - seqtk 1.3-r117-dirty (<https://github.com/lh3/seqtk>)
   - SOAPnuke v1.5.6 (<https://github.com/BGI-flexlab/SOAPnuke>)
 
 - Software for alignment and bam file statistics:
   - BWA v0.7.16 (<https://github.com/lh3/bwa>)
   - Samtools v1.3 (<https://github.com/samtools/samtools>)
-  - bamdst v1.0.6 (<https://github.com/shiquan/bamdst>)
+  - bamdst v1.0.9 (<https://github.com/shiquan/bamdst>)
 
 - Software for variant calling:
-  - freebayes v1.3.0 (<https://github.com/ekg/freebayes>)
+  - freebayes v1.3.4 (<https://github.com/ekg/freebayes>)
 
 - Other required softwares:
   - bedtools v2.26.0 (<https://bedtools.readthedocs.io/en/latest/>)
   - bcftools v1.6 (<https://github.com/samtools/bcftools/>)
-  - tabix v1.9 (<https://github.com/samtools/tabix/>)
+  - tabix 1.12-38-g818008a (<https://github.com/samtools/tabix/>)
   - bgzip v1.9 (<https://github.com/samtools/tabix/>)
   - mosdepth v0.2.9 (<https://github.com/brentp/mosdepth>)
 
@@ -104,7 +104,7 @@ The example of `input.json` and `sample.list` files can be found in `config` fol
 #### Step 2. Enter docker env
 
 ```shell
-sudo docker run -it -v your/data/path/:/root/data/ -v your/config/path/:/root/config/ -v your/result/path/:/root/result/ cov2multipcr:v1.0
+sudo docker run -it -v /your/data/absolute/path/:/root/data/ -v /your/config/absolute/path/:/root/config/ -v /your/result/absolute/path/:/root/result/ cov2multipcr:v1.0
 ```
 
 #### Step 3. Run analysis
@@ -178,5 +178,9 @@ April 6th, 2021
 - <https://github.com/MGI-tech-bioinformatics/SARS-CoV-2_Multi-PCR_v1.0>
 
 ## Contribution
+
+- Bochen Cheng, MGI-Latvia
+- Shixu He, MGI-Latvia
+- Zhiying Mei, MGI
 
 ## License

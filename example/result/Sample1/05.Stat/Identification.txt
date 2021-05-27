@@ -1,2 +1,0 @@
-Sample	Clean_Reads	GAPDH_Reads	Lambda_Reads	SARS-CoV-2_Reads	GAPDH_Rate	Lambda_Rate	SARS-CoV-2_Reads_Pct	Genome_Average_Depth	≥1X_Region_Average_Depth	≥1X_Cov	≥1X_size	≥100X_Cov	≥100X_size	Identification_Result
-Sample1	5858984	373	956647	4887500	0.01%	16.33%	83.63%	16342.98	16342.98	100.00%	29871	100.00%	29870	Positive

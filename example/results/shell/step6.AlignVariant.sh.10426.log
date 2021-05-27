@@ -1,0 +1,7 @@
+[2021-05-27 11:07:36]: Task list: /data/result/shell/step6.AlignVariant.sh
+[2021-05-27 11:07:36]: Request memory for each task : 6144 M
+[2021-05-27 11:07:36]: Number of parallel: 10
+[2021-05-27 11:07:36]: Total number of task: 1
+[2021-05-27 11:07:36]: Start: /data/result/shell/step6.AlignVariant.sh.10426.watchDog/tast_0001.sh
+[2021-05-27 11:07:39]: Finish: /data/result/shell/step6.AlignVariant.sh.10426.watchDog/tast_0001.sh
+[2021-05-27 11:07:40]: Finish all tasks

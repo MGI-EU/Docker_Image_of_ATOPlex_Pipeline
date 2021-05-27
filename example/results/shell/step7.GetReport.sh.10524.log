@@ -1,0 +1,7 @@
+[2021-05-27 11:07:40]: Task list: /data/result/shell/step7.GetReport.sh
+[2021-05-27 11:07:40]: Request memory for each task : 1024 M
+[2021-05-27 11:07:40]: Number of parallel: 60
+[2021-05-27 11:07:40]: Total number of task: 1
+[2021-05-27 11:07:40]: Start: /data/result/shell/step7.GetReport.sh.10524.watchDog/tast_0001.sh
+[2021-05-27 11:07:40]: Finish: /data/result/shell/step7.GetReport.sh.10524.watchDog/tast_0001.sh
+[2021-05-27 11:07:41]: Finish all tasks

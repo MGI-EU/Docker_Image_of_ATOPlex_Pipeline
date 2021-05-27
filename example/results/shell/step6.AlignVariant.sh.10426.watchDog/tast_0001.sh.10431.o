@@ -1,0 +1,40 @@
+[FLASH] Starting FLASH v1.2.11
+[FLASH] Fast Length Adjustment of SHort reads
+[FLASH]  
+[FLASH] Input files:
+[FLASH]     /data/result/result/Sample1/04.CutPrimer/Sample1_1.cutprimer.fq.gz
+[FLASH]     /data/result/result/Sample1/04.CutPrimer/Sample1_2.cutprimer.fq.gz
+[FLASH]  
+[FLASH] Output files:
+[FLASH]     /data/result/result/Sample1/04.CutPrimer/Sample1.extendedFrags.fastq
+[FLASH]     /data/result/result/Sample1/04.CutPrimer/Sample1.notCombined_1.fastq
+[FLASH]     /data/result/result/Sample1/04.CutPrimer/Sample1.notCombined_2.fastq
+[FLASH]     /data/result/result/Sample1/04.CutPrimer/Sample1.hist
+[FLASH]     /data/result/result/Sample1/04.CutPrimer/Sample1.histogram
+[FLASH]  
+[FLASH] Parameters:
+[FLASH]     Min overlap:           7
+[FLASH]     Max overlap:           65
+[FLASH]     Max mismatch density:  0.250000
+[FLASH]     Allow "outie" pairs:   false
+[FLASH]     Cap mismatch quals:    false
+[FLASH]     Combiner threads:      8
+[FLASH]     Input format:          FASTQ, phred_offset=33
+[FLASH]     Output format:         FASTQ, phred_offset=33
+[FLASH]  
+[FLASH] Starting reader and writer threads
+[FLASH] Starting 8 combiner threads
+[FLASH] Processed 55 read pairs
+[FLASH]  
+[FLASH] Read combination statistics:
+[FLASH]     Total pairs:      55
+[FLASH]     Combined pairs:   35
+[FLASH]     Uncombined pairs: 20
+[FLASH]     Percent combined: 63.64%
+[FLASH]  
+[FLASH] Writing histogram files.
+[FLASH]  
+[FLASH] FLASH v1.2.11 complete!
+[FLASH] 0.002 seconds elapsed
+null device 
+          1 

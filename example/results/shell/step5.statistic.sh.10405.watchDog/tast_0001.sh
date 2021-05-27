@@ -1,0 +1,1 @@
+export PYTHONPATH=/data/pipeline/SARS-CoV-2_Multi-PCR_v1.1/lib/python3-packages:$PYTHONPATH && /data/pipeline/SARS-CoV-2_Multi-PCR_v1.1/tools/Python-3.7.5/bin/python3 /data/pipeline/SARS-CoV-2_Multi-PCR_v1.1/bin/CoV_stat.py -t PE -d /data/result/result -l /data/config/sample.list

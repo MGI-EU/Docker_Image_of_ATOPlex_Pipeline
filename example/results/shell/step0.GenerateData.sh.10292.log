@@ -1,0 +1,9 @@
+[2021-05-27 11:07:26]: Task list: /data/result/shell/step0.GenerateData.sh
+[2021-05-27 11:07:26]: Request memory for each task : 1024 M
+[2021-05-27 11:07:26]: Number of parallel: 60
+[2021-05-27 11:07:26]: Total number of task: 2
+[2021-05-27 11:07:26]: Start: /data/result/shell/step0.GenerateData.sh.10292.watchDog/tast_0001.sh
+[2021-05-27 11:07:26]: Start: /data/result/shell/step0.GenerateData.sh.10292.watchDog/tast_0002.sh
+[2021-05-27 11:07:26]: Finish: /data/result/shell/step0.GenerateData.sh.10292.watchDog/tast_0001.sh
+[2021-05-27 11:07:26]: Finish: /data/result/shell/step0.GenerateData.sh.10292.watchDog/tast_0002.sh
+[2021-05-27 11:07:27]: Finish all tasks

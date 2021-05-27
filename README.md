@@ -4,11 +4,55 @@ This image has been tested by MGI EU team on 2021-05-20 based on the pipeline wi
 
 The latest version will be automatically followed when building the image.
 
-## Introduction
+## 1. Introduction
 
 This pipeline could accurately and efficiently identify SARS-CoV-2 reads from multiplex PCR sequencing data, and report the infection status of sequencing samples with positive/negative/uncertain label. The pipeline could also get the variant information such as SNP/INDEL and generate the consensus sequence. (From: [SARS-CoV-2_Multi-PCR_v1.0](https://github.com/MGI-tech-bioinformatics/SARS-CoV-2_Multi-PCR_v1.0))
 
-![Image](https://github.com/MGI-EU/Docker_Image_of_ATOPlex_Pipeline/blob/main/assets/Pipeline.png)
+![Pipeline](https://github.com/MGI-EU/Docker_Image_of_ATOPlex_Pipeline/blob/main/assets/Pipeline.png)
+
+## 2. Overview
+
+### 2.1. Demo
+
+We've provided a demo in `example` folder.
+
+- Demo data
+
+  Inputs comprise of config files and input data, they are in `example/config` and `example/data` respectively. For demo, users should not change any content in any file in these two folders.
+  
+- Demo execution
+
+  ```shell
+  git clone https://github.com/MGI-EU/Docker_Image_of_ATOPlex_Pipeline.git;
+  cd Docker_Image_of_ATOPlex_Pipeline;
+  docker build -t cov2multipcr:v1.0 .;
+  cd example;
+  rm -rf results/*;
+  sudo docker run -it -v data/:/root/data/ -v config/:/root/config/ -v results/:/root/result/ cov2multipcr:v1.0
+  python3 /root/repos/SARS-CoV-2_Multi-PCR_v1.0/bin/Main_SARS-CoV-2.py -i /root/config/input.json
+  sh /root/result/main.sh
+  ```
+
+- Demo output
+
+  Users can find all intermediate files and final report files in `example/results` folder (or any other mounted resut's folder). There are also two files (unused) in `example` folder where we execute the docker image.
+
+  For assembled consensus genome FASTA file, users can find it in `example/resuts/result/Sample1/05.Stat/Sample1.Consensus.fa`.
+
+  For HTML visualized report files, users can find them in `example/resuts/result/Sample1/05.Stat/Sample1_en.html`.
+
+  ![DemoResutsShow](https://github.com/MGI-EU/Docker_Image_of_ATOPlex_Pipeline/blob/main/assets/DemoResutsShow.png)
+
+### 2.2. Latest update
+
+From [original repository](https://github.com/MGI-tech-bioinformatics/SARS-CoV-2_Multi-PCR_v1.0):
+
+1. Use variant annotation excel instead of VCF file in HTML report
+2. Optimized depth distribution SVG in HTML report.
+3. Mark the primer base quality as 0 instead of removing primer sequence
+4. Update primer sequence information
+5. Reduce software running time
+6. Upload a docker version of this software
 
 ## Requirements
 
@@ -166,12 +210,24 @@ April 6th, 2021
 2. Remove dependency on original pipeline repo in Dockerfile.
 3. New downstream analysis function.
 
-## FAQ
+## FAQ && Troubleshooting
 
 1. Where can I obtain example data ?
   
     The example results are generated using real data. For the reason of data security, we cannot publish our real data as example. If users need samples for test, please leave us an issue or contact us directly.
     Our email: <MGI_BIT_EU@mgi-tech.com>.
+
+2. `singularity` installed on ubuntu is a game instead of container.
+  
+  If users use `sudo apt install singularity` on ubuntu to install `singularity` container tool, they may install a game "singularity" instead of container `singularity`. `singularity` container tool" hasn't been publised in ubuntu's default software mirror (2021-05-27).
+  
+  We recommend users install [miniconda](https://docs.conda.io/en/latest/miniconda.html), and install `singularity` through conda environment manager: `conda install -c conda-forge singularity`
+
+3. Execution of `singularity` version of ATOPlex pipeline gets stuck to step2 (bwa alignment)
+  
+  We've tested the singularity version (2021-05-27) of our pipeline on guest Ubuntu system in Windows10 host. We found that the execution may get stuck to step2, whhich is alignment step (`bwa mem`). When we increase the hardware resource (CPU, memory) allocated to the virtual OS, things go well again.
+
+  If users get stuck to one step, users may consider checking the script error log file, or entering the container environment and manually run the step shell script. Or, user could just provide more hardware resource.
 
 ## Reference
 

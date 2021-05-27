@@ -1,0 +1,7 @@
+[2021-05-27 11:07:27]: Task list: /data/result/shell/step1.filter.sh
+[2021-05-27 11:07:27]: Request memory for each task : 1024 M
+[2021-05-27 11:07:27]: Number of parallel: 60
+[2021-05-27 11:07:27]: Total number of task: 1
+[2021-05-27 11:07:27]: Start: /data/result/shell/step1.filter.sh.10312.watchDog/tast_0001.sh
+[2021-05-27 11:07:30]: Finish: /data/result/shell/step1.filter.sh.10312.watchDog/tast_0001.sh
+[2021-05-27 11:07:31]: Finish all tasks

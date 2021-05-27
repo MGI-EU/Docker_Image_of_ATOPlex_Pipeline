@@ -1,0 +1,7 @@
+[2021-05-27 11:07:31]: Task list: /data/result/shell/step2.bwa.sh
+[2021-05-27 11:07:31]: Request memory for each task : 6144 M
+[2021-05-27 11:07:31]: Number of parallel: 10
+[2021-05-27 11:07:31]: Total number of task: 1
+[2021-05-27 11:07:31]: Start: /data/result/shell/step2.bwa.sh.10333.watchDog/tast_0001.sh
+[2021-05-27 11:07:31]: Finish: /data/result/shell/step2.bwa.sh.10333.watchDog/tast_0001.sh
+[2021-05-27 11:07:32]: Finish all tasks

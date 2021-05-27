@@ -1,0 +1,2 @@
+Sample	Raw_Q30	GC_Content	Raw_Reads	Clean_Reads	Clean_Rate	Mapping_Rate
+Sample1	93.59%	41.92%	200	150	75.00%	99.50%

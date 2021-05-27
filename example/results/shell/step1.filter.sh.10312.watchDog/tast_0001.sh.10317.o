@@ -1,0 +1,5 @@
+2021-05-27 11:07:27 INFO  - [processParams] [417] Log Init Success
+2021-05-27 11:07:27 INFO  - [processParams] [454] fq1 read length: 100
+2021-05-27 11:07:27 INFO  - [processParams] [479] fq2 read length: 100
+2021-05-27 11:07:30 INFO  - [filter] [868] delete params
+2021-05-27 11:07:30 INFO  - [filter] [1053] PreProcess Finish

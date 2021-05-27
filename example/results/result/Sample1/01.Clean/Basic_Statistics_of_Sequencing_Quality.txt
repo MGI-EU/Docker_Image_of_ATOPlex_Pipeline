@@ -1,0 +1,18 @@
+Item                                                              	raw reads(fq1)	clean reads(fq1)	raw reads(fq2)	clean reads(fq2)
+Read length                                                       	100           	100           	100           	100           
+Total number of reads                                             	100   (100.00%)	75    (100.00%)	100   (100.00%)	75    (100.00%)
+Number of filtered reads (%)                                     	25    (25.00%)	-             	25    (25.00%)	-             
+
+Total number of bases                                            	10000 (100.00%)	7500  (100.00%)	10000 (100.00%)	7500  (100.00%)
+Number of filtered bases (%)                                     	2500  (25.00%)	-             	2500  (25.00%)	-             
+
+Reads related to Adapter and Trimmed (%)                           	0     ( 0.00%)	-             	0     ( 0.00%)	-             
+
+Number of base A (%)                                             	2956  (29.56%)	2155  (28.73%)	2778  (27.78%)	2143  (28.57%)
+Number of base C (%)                                             	2065  (20.65%)	1541  (20.55%)	2127  (21.27%)	1644  (21.92%)
+Number of base G (%)                                             	2215  (22.15%)	1602  (21.36%)	2180  (21.80%)	1536  (20.48%)
+Number of base T (%)                                             	2764  (27.64%)	2202  (29.36%)	2915  (29.15%)	2177  (29.03%)
+Number of base N (%)                                             	0     ( 0.00%)	0     ( 0.00%)	0     ( 0.00%)	0     ( 0.00%)
+
+Number of base calls with quality value of 20 or higher (Q20+) (%)	9793  (97.93%)	7301  (97.35%)	9851  (98.51%)	7360  (98.13%)
+Number of base calls with quality value of 30 or higher (Q30+) (%)	9284  (92.84%)	6816  (90.88%)	9435  (94.35%)	6964  (92.85%)

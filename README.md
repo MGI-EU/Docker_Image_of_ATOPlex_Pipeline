@@ -35,7 +35,7 @@ We've provided a demo in `example` folder.
 
 - Demo output
 
-  Users can find all intermediate files and final report files in `example/results` folder (or any other mounted resut's folder). There are also two files (unused) in `example` folder where we execute the docker image.
+  Users can find all intermediate files and final report files in `example/results` folder (or any other mounted resut's folder). There are also two files (unused) in `example` folder where we execute the docker image. (We've deleted `01.Clean/Raw_Sample1_*.fq.gz` in sample's result folder because they're linux softlink files and can't be recognized by github desktop)
 
   For assembled consensus genome FASTA file, users can find it in `example/resuts/result/Sample1/05.Stat/Sample1.Consensus.fa`.
 
@@ -54,12 +54,12 @@ From [original repository](https://github.com/MGI-tech-bioinformatics/SARS-CoV-2
 5. Reduce software running time
 6. Upload a docker version of this software
 
-## Requirements
+## 3. Requirements
 
 - Docker: >=v20.10.5
 - Sudo permission (for Docker)
 
-### Supplementary
+### 3.1. Supplementary
 
 Normally, these requirements will be automatically installed after building dockerfile.
 
@@ -88,7 +88,7 @@ Normally, these requirements will be automatically installed after building dock
   - bgzip v1.9 (<https://github.com/samtools/tabix/>)
   - mosdepth v0.2.9 (<https://github.com/brentp/mosdepth>)
 
-## Installation
+## 4. Installation
 
 Users should install Docker and obtain the permission to build dockerfile before using this pipeline.
 
@@ -98,17 +98,17 @@ cd Docker_Image_of_ATOPlex_Pipeline
 docker build -t cov2multipcr:v1.0 .
 ```
 
-## Usage
+## 5. Usage
 
-### Hardware Requirement
+### 5.1. Hardware Requirement
 
-#### Memory Requirement
+#### 5.1.1. Memory Requirement
 
 Designed required minimum memory: 6GB
 
 The actual necessary memory for each sample is 2GB for one sample with 3.2M PE100 reads. If users want higher degree of parallelism, they can modify the `--mem` parameter in `main.sh` (see usage [Step3](#step-3-run-analysis)) for pipeline step2 and step6.
 
-#### Threads and Parallelism
+#### 5.1.2. Threads and Parallelism
 
 The pipeline comprises two levels of parallelism.
 
@@ -116,9 +116,9 @@ The first level is sample-level-parallelism, controlled by a customized Perl scr
 
 The second level is tool-level-parallelism, controlled by the parameters of each integrated software, such as BWA, samtools, mosdepth, etc. The thread number has been set to 3, a fixed value. Users can modify the generated shell script for each pipeline step, change the value according to their needs.
 
-### Operation
+### 5.2. Operation
 
-#### Step 1. Prepare `input.json` and `sample.list` files
+#### 5.2.1. Step 1. Prepare `input.json` and `sample.list` files
 
 The example of `input.json` and `sample.list` files can be found in `config` folder in this repo.
 
@@ -145,13 +145,13 @@ The example of `input.json` and `sample.list` files can be found in `config` fol
 
 **Note that different samples must have different data path or barcode.**
 
-#### Step 2. Enter docker env
+#### 5.2.2. Step 2. Enter docker env
 
 ```shell
 sudo docker run -it -v /your/data/absolute/path/:/root/data/ -v /your/config/absolute/path/:/root/config/ -v /your/result/absolute/path/:/root/result/ cov2multipcr:v1.0
 ```
 
-#### Step 3. Run analysis
+#### 5.2.3. Step 3. Run analysis
 
 After starting and entering docker environment, run follwing commands to do analysis.
 
@@ -161,7 +161,7 @@ python3 /root/repos/SARS-CoV-2_Multi-PCR_v1.0/bin/Main_SARS-CoV-2.py -i /root/co
 nohup sh /root/result/main.sh &
 ```
 
-#### Step 4. Collect results
+#### 5.2.4. Step 4. Collect results
 
 (Note that we've deleted large output and sensitive files from example in this repo.)
 
@@ -186,13 +186,33 @@ your/result/path/*/05.Stat/*.vcf.gz
 your/result/path/*/05.Stat/*.vcf.anno
 ```
 
-- TML report
+- consensus genome sequence
+
+```text
+your/result/path/*/05.Stat/*.Consensus.fa
+```
+
+- HTML report
 
 ```text
 your/result/path/*/05.Stat/*.html
 ```
 
-## Updates
+## 6. Updates
+
+May 20th, 2021
+
+1. Provide full demo (comprises of input data, execution steps and output files) in README.
+2. Add troubleshooting section in README.
+
+Detailed updates from [original repository](https://github.com/MGI-tech-bioinformatics/SARS-CoV-2_Multi-PCR_v1.0):
+
+1. Use variant annotation excel instead of VCF file in HTML report
+2. Optimized depth distribution SVG in HTML report.
+3. Mark the primer base quality as 0 instead of removing primer sequence
+4. Update primer sequence information
+5. Reduce software running time
+6. Upload a docker version of this software
 
 April 12th, 2021
 
@@ -203,12 +223,6 @@ April 12th, 2021
 April 6th, 2021
 
 1. Create repository.
-
-## Update plan
-
-1. Expose memory and thread parameters.
-2. Remove dependency on original pipeline repo in Dockerfile.
-3. New downstream analysis function.
 
 ## FAQ && Troubleshooting
 
@@ -234,6 +248,8 @@ April 6th, 2021
 - <https://github.com/MGI-tech-bioinformatics/SARS-CoV-2_Multi-PCR_v1.0>
 
 ## Contribution
+
+(Alphabetical order)
 
 - Bochen Cheng, MGI-Latvia
 - Shixu He, MGI-Latvia

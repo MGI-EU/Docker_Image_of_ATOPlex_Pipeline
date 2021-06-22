@@ -45,7 +45,7 @@ RUN pip3 install openpyxl
 
 # Install SARS-CoV-2 code base
 RUN mkdir /root/repos
-RUN cd /root/repos && git clone https://github.com/MGI-tech-bioinformatics/SARS-CoV-2_Multi-PCR_v1.0;
+RUN cd /root/repos && git clone https://github.com/MGI-tech-bioinformatics/SARS-CoV-2_Multi-PCR_v1.0.git;
 
 # htslib (tabix bgzip)
 RUN apt-get install -qy libcurl4-openssl-dev

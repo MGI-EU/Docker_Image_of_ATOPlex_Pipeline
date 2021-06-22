@@ -1,6 +1,6 @@
 # Docker Image of ATOPlex Pipeline
 
-This image has been tested by MGI EU team on 2021-05-20 based on the pipeline with the original distribution [SARS-CoV-2_Multi-PCR_v1.0](https://github.com/MGI-tech-bioinformatics/SARS-CoV-2_Multi-PCR_v1.0), version 1.0 .
+This image has been tested by MGI EU team on 2021-06-23 based on the pipeline with the original distribution [SARS-CoV-2_Multi-PCR_v1.0](https://github.com/MGI-tech-bioinformatics/SARS-CoV-2_Multi-PCR_v1.0), version 1.0 .
 
 The latest version will be automatically followed when building the image.
 
@@ -23,13 +23,27 @@ We've provided a demo in `example` folder.
 - Demo execution
 
   ```shell
+  ######################## Docker
   git clone https://github.com/MGI-EU/Docker_Image_of_ATOPlex_Pipeline.git;
   cd Docker_Image_of_ATOPlex_Pipeline;
   docker build -t cov2multipcr:v1.0 .;
   cd example;
-  rm -rf results/*;
-  sudo docker run -it -v data/:/root/data/ -v config/:/root/config/ -v results/:/root/result/ cov2multipcr:v1.0
-  python3 /root/repos/SARS-CoV-2_Multi-PCR_v1.0/bin/Main_SARS-CoV-2.py -i /root/config/input.json
+  rm -rf results/* snpEff*;
+  sudo docker run -it -v $(pwd -P)/data/:/root/data/ -v $(pwd -P)/config/:/root/config/ -v $(pwd -P)/results/:/root/result/ cov2multipcr:v1.0
+  ## In container
+  python3 /root/repos/SARS-CoV-2_Multi-PCR_v1.0/bin/Main_SARS-CoV-2.py -i /root/config/input.json;
+  sh /root/result/main.sh
+
+  ######################## Singularity
+  git clone https://github.com/MGI-EU/Docker_Image_of_ATOPlex_Pipeline.git;
+  cd Docker_Image_of_ATOPlex_Pipeline;
+  docker build -t cov2multipcr:v1.0 .;
+  singularity build --sandbox ./cov2multipcr/ docker-daemon://cov2multipcr:v1.0;
+  cd example;
+  rm -rf results/* snpEff*;
+  singularity shell -B /tmp/:/tmp/ -B /run/:/run/ -B data/:/root/data/:ro -B config/:/root/config/:ro -B results/:/root/result/:rw ../cov2multipcr/;
+  # In container
+  /usr/bin/python3 /root/repos/SARS-CoV-2_Multi-PCR_v1.0/bin/Main_SARS-CoV-2.py -i /root/config/input.json;
   sh /root/result/main.sh
   ```
 

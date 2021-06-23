@@ -45,7 +45,10 @@ RUN pip3 install openpyxl
 
 # Install SARS-CoV-2 code base
 RUN mkdir /root/repos
-RUN cd /root/repos && git clone https://github.com/MGI-tech-bioinformatics/SARS-CoV-2_Multi-PCR_v1.0.git;
+RUN cd /root/repos && git clone https://github.com/MGI-tech-bioinformatics/SARS-CoV-2_Multi-PCR_v1.0.git
+RUN wget https://raw.githubusercontent.com/MGI-EU/Docker_Image_of_ATOPlex_Pipeline/main/assets/ATOPlex_Pipeline_Report.Scripts.consensusSeqFiltering.py && mv ATOPlex_Pipeline_Report.Scripts.consensusSeqFiltering.py /root/repos/SARS-CoV-2_Multi-PCR_v1.0/tools/
+RUN echo "	check_call('/bin/bash %s/main.sh'%(work_dir),shell=True)" >> /root/repos/SARS-CoV-2_Multi-PCR_v1.0/bin/Main_SARS-CoV-2.py && \
+echo "	check_call('%s %s/ATOPlex_Pipeline_Report.Scripts.consensusSeqFiltering.py -i %s' % (python3, tools, file_json), shell=True)" >> /root/repos/SARS-CoV-2_Multi-PCR_v1.0/bin/Main_SARS-CoV-2.py
 
 # htslib (tabix bgzip)
 RUN apt-get install -qy libcurl4-openssl-dev

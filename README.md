@@ -51,6 +51,8 @@ We've provided a demo in `example` folder.
 
   Users can find all intermediate files and final report files in `example/results` folder (or any other mounted resut's folder). There are also two files (unused) in `example` folder where we execute the docker image. (We've deleted `01.Clean/Raw_Sample1_*.fq.gz` in sample's result folder because they're linux softlink files and can't be recognized by github desktop)
 
+  **For files importable to downstream [`Nextstrain`](https://docs.nextstrain.org/en/latest/index.html) evolution analysis platform (consensus fasta and metadata of all samples), users can find them in `example/results/result`**. Named `All_Samples.Consensus.filtered.fa` and `All_Samples.metadata.filtered.tsv`.
+
   For assembled consensus genome FASTA file, users can find it in `example/resuts/result/Sample1/05.Stat/Sample1.Consensus.fa`.
 
   For HTML visualized report files, users can find them in `example/resuts/result/Sample1/05.Stat/Sample1_en.html`.
@@ -67,6 +69,7 @@ From [original repository](https://github.com/MGI-tech-bioinformatics/SARS-CoV-2
 4. Update primer sequence information
 5. Reduce software running time
 6. Upload a docker version of this software
+7. Add support for generation of importable inputs (filtered consensus FASTA and metadata) for downstream `Nextstrain` evolution analysis.
 
 ## 3. Requirements
 

@@ -173,6 +173,7 @@ def main():
         check_call("cat {} > {}".format(" ".join([result_dir + "/" + sample + "/05.Stat/*.Consensus.fa" for sample in sampleList]), infasta), shell=True)
         seqIDset = fastaFscan(infasta, oufasta, seqLen = args.min_len, nRatio = args.max_Nratio, ambiguousNucNum = args.max_ambiguous)
         metadataManager(inmeta , oumeta, validIDset=seqIDset)
+        check_call("rm {}".format(infasta), shell=True)
     elif (infasta != None):
         print("Warning: The script is called directly. Please provide proper arguments to organize input and output files.")
         seqIDset = fastaFscan(infasta, oufasta, seqLen = args.min_len, nRatio = args.max_Nratio, ambiguousNucNum = args.max_ambiguous)

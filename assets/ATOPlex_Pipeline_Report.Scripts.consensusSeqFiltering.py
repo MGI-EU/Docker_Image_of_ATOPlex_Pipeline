@@ -13,6 +13,7 @@ ambiguous nucleotide number < 10
 
 import argparse
 import datetime
+from genericpath import exists
 
 
 import sys
@@ -161,10 +162,11 @@ def main():
         file_json.close()
         sampleList = list()
         with open(jsonobj["sample_list"], "rt") as _saml:
-            sampleList.append(re.split(r"\s+", _saml.readline(), maxsplit=1)[0])
+            for line in _saml:
+                sampleList.append(re.split(r"\s+", line, maxsplit=1)[0])
         result_dir = os.path.abspath(jsonobj["workdir"])+"/result"
         infasta = result_dir + "/tmp.All_Samples.Consensus.fa"
-        inmeta = jsonobj["sample_meta"] if len(jsonobj["sample_meta"]) > 0 else None
+        inmeta = jsonobj["sample_meta"] if os.path.exists(jsonobj["sample_meta"]) else None
         oufasta = result_dir + "/All_Samples.Consensus.filtered.fa"
         oumeta = result_dir + "/All_Samples.metadata.filtered.tsv"
 
@@ -172,7 +174,7 @@ def main():
         seqIDset = fastaFscan(infasta, oufasta, seqLen = args.min_len, nRatio = args.max_Nratio, ambiguousNucNum = args.max_ambiguous)
         metadataManager(inmeta , oumeta, validIDset=seqIDset)
     elif (infasta != None):
-        print("Warning: ")
+        print("Warning: The script is called directly. Please provide proper arguments to organize input and output files.")
         seqIDset = fastaFscan(infasta, oufasta, seqLen = args.min_len, nRatio = args.max_Nratio, ambiguousNucNum = args.max_ambiguous)
         metadataManager(inmeta , oumeta, validIDset=seqIDset)
 

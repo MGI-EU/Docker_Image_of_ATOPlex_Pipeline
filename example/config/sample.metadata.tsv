@@ -1,2 +1,3 @@
 strain	virus	date	region	segment	host
-Sample1	ncov	2020-04-15	China	genome	Homo sapiens
+Sample1	ncov	2021-04-15	China	genome	Homo sapiens
+Sample2	ncov	2021-04-15	China mainland	genome	Homo sapiens

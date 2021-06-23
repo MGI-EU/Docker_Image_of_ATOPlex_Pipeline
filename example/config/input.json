@@ -2,6 +2,7 @@
   "FqType": "PE100",
   "sample_list": "/root/config/sample.list",
   "sample_meta": "/root/config/sample.metadata.tsv",
+  "consensus_para": "--min-len 29000 --max-Nratio 1 --max-ambiguous 10",
   "workdir": "/root/result",
   "SplitData": "20M",
   "SOAPnuke_param": "-l 10 -q 0.2 -n 0.05 -Q 2 -G -T 1 -f AAGTCGGAGGCCAAGCGGTCTTAGGAAGACAA  -r AAGTCGGATCGTAGCCATGTCGTTCTGTGAGCCAAGGAGTTG",

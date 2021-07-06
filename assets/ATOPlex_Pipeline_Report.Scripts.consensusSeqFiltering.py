@@ -61,23 +61,23 @@ def fastaFscan(faFile, filtedFafile, seqLen = 29000, nRatio = 0.05, ambiguousNuc
             idset.add(id.lstrip(">"))
     return idset
 
-def metadataManager(inMetaFile, outMetaFile, validIDset = set()):
+def metadataManager(inMetaFile, outMetaFile, toolVer = "ATOPlex_ver1.0", validIDset = set()):
+    timenow = datetime.datetime.now()
+    today = "%04d-%02d-%02d" % (timenow.year, timenow.month, timenow.day)
     if (inMetaFile == None) or (not os.path.exists(inMetaFile)):
         # strain  virus   date    region  segment host
         # Sample1 ncov    2020-04-15      China mainland  genome  Homo sapiens
-        timenow = datetime.datetime.now()
-        today = "%04d-%02d-%02d" % (timenow.year, timenow.month, timenow.day)
         with open(outMetaFile, "wt") as _omf:
-            _omf.write("strain\tvirus\tdate\tregion\tsegment\thost\n")
+            _omf.write("strain\tvirus\tdate\tregion\tsegment\thost\ttool_ver\tanalysis_time\n")
             for seqID in validIDset:
-                _omf.write("{}\tncov\t{}\tGlobal\tgenome\tHomo sapiens\n".format(seqID.lstrip(">"),today))
+                _omf.write("{}\tncov\t{}\tGlobal\tgenome\tHomo sapiens\t{}\t{}\n".format(seqID.lstrip(">"),today,toolVer,today))
     else:
         with open(inMetaFile, "rt") as _imf, open(outMetaFile, "wt") as _omf:
-            _omf.write(_imf.readline())
+            _omf.write("{}\ttool_ver\tanalysis_time\n".format(_imf.readline().rstrip()))
             for line in _imf:
                 seqID = line.split("\t", maxsplit=1)[0]
                 if seqID in validIDset:
-                    _omf.write(line)
+                    _omf.write("{}\t{}\t{}\n".format(line.rstrip(), toolVer,today))
                 else:
                     print("Sample {} is discarded becuse its consensus FASTA is invalid.".format(seqID))
 
@@ -148,6 +148,14 @@ def parseArguments():
         help="New metadata of all valid consensus sequence."
     )
 
+    parser.add_argument(
+        "--tool-version",
+        required=False,
+        default="ATOPlex_ver1.0",
+        type=str,
+        help="The version information of tool to be added to metadata 'tool_ver' field."
+    )
+
     return parser.parse_args()
 
 def main():
@@ -172,7 +180,7 @@ def main():
 
         check_call("cat {} > {}".format(" ".join([result_dir + "/" + sample + "/05.Stat/*.Consensus.fa" for sample in sampleList]), infasta), shell=True)
         seqIDset = fastaFscan(infasta, oufasta, seqLen = args.min_len, nRatio = args.max_Nratio, ambiguousNucNum = args.max_ambiguous)
-        metadataManager(inmeta , oumeta, validIDset=seqIDset)
+        metadataManager(inmeta , oumeta, toolver = args.tool_version, validIDset=seqIDset)
         check_call("rm {}".format(infasta), shell=True)
     elif (infasta != None):
         print("Warning: The script is called directly. Please provide proper arguments to organize input and output files.")

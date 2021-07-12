@@ -431,3 +431,5 @@ if __name__ == '__main__':
 	else:
 		print('ERROR: invalid -s param,use local/qsubsge')
 		sys.exit(1)
+	check_call('/bin/bash %s/main.sh'%(work_dir),shell=True)
+	check_call('%s %s/ATOPlex_Pipeline_Report.Scripts.consensusSeqFiltering.py -i %s %s' % (python3, tools, jsonfile, jsonobj['consensus_para']), shell=True)

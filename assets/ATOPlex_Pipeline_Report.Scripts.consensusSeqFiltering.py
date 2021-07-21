@@ -70,7 +70,7 @@ def metadataManager(inMetaFile, outMetaFile, toolVer = "ATOPlex_ver1.0", validID
         with open(outMetaFile, "wt") as _omf:
             _omf.write("strain\tvirus\tdate\tregion\tsegment\thost\ttool_ver\tanalysis_time\n")
             for seqID in validIDset:
-                _omf.write("{}\tncov\t{}\tGlobal\tgenome\tHomo sapiens\t{}\t{}\n".format(seqID.lstrip(">"),today,toolVer,today))
+                _omf.write("{}\tncov\t{}\tGlobal\tgenome\tHuman\t{}\t{}\n".format(seqID.lstrip(">"),today,toolVer,today))
     else:
         with open(inMetaFile, "rt") as _imf, open(outMetaFile, "wt") as _omf:
             _omf.write("{}\ttool_ver\tanalysis_time\n".format(_imf.readline().rstrip()))

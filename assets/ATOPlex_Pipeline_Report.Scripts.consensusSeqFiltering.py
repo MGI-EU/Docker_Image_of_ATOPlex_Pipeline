@@ -68,7 +68,7 @@ def metadataManager(inMetaFile, outMetaFile, toolVer = "ATOPlex_ver1.0", validID
         # strain  virus   date    region  segment host
         # Sample1 ncov    2020-04-15      China mainland  genome  Homo sapiens
         with open(outMetaFile, "wt") as _omf:
-            _omf.write("strain\tvirus\tdate\tregion\tsegment\thost\ttool_ver\tanalysis_time\n")
+            _omf.write("strain\tvirus\tdate\tregion\tsegment\thost\ttool_ver\tdate_submitted\n")
             for seqID in validIDset:
                 _omf.write("{}\tncov\t{}\tGlobal\tgenome\tHuman\t{}\t{}\n".format(seqID.lstrip(">"),today,toolVer,today))
     else:

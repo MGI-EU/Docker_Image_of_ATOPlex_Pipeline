@@ -236,24 +236,24 @@ def GetReport(script,sample):
 		%{'bin':bin,'Stat_dir':Stat_dir,'sample':sample,'python3':python3})
 	return
 
-def MainShell(script_file,step0shell,step1shell,step2shell,step3shell,step4shell,step5shell,step6shell,step7shell):
+def MainShell(script_file,step0shell,step1shell,step2shell,step3shell,step4shell,step5shell,step6shell,step7shell, watchdog_mem, watchdog_maxjob):
 	script = open(script_file,'w')
-	script.write('''echo "start step0  at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`" && perl %(watchdog)s --mem 1G --lines 1 --maxjob 300 %(stepshell)s && echo "finish step0 at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`"\n'''\
-		%{'watchdog':watchdog,'stepshell':step0shell})
-	script.write('''echo "start step1  at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`" && perl %(watchdog)s --mem 1G --lines 1 --maxjob 300 %(stepshell)s && echo "finish step1 at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`"\n'''\
-		%{'watchdog':watchdog,'stepshell':step1shell})
-	script.write('''echo "start step2  at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`" && perl %(watchdog)s --mem 6G --lines 2 --maxjob 300 %(stepshell)s && echo "finish step2 at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`"\n'''\
-		%{'watchdog':watchdog,'stepshell':step2shell})
-	script.write('''echo "start step3  at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`" && perl %(watchdog)s --mem 1G --lines 1 --maxjob 300 %(stepshell)s && echo "finish step3 at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`"\n'''\
-		%{'watchdog':watchdog,'stepshell':step3shell})
-	script.write('''echo "start step4  at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`" && perl %(watchdog)s --mem 1G --lines 1 --maxjob 300 %(stepshell)s && echo "finish step4 at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`"\n'''\
-		%{'watchdog':watchdog,'stepshell':step4shell})
-	script.write('''echo "start step5  at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`" && perl %(watchdog)s --mem 1G --lines 1 --maxjob 300 %(stepshell)s && echo "finish step5 at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`"\n'''\
-		%{'watchdog':watchdog,'stepshell':step5shell})
-	script.write('''echo "start step6  at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`" && perl %(watchdog)s --mem 6G --lines 13 --maxjob 300 %(stepshell)s && echo "finish step6 at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`"\n'''\
-		%{'watchdog':watchdog,'stepshell':step6shell})
-	script.write('''echo "start step7  at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`" && perl %(watchdog)s --mem 1G --lines 1 --maxjob 300 %(stepshell)s && echo "finish step7 at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`"\n'''\
-		%{'watchdog':watchdog,'stepshell':step7shell})
+	script.write('''echo "start step0  at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`" && perl %(watchdog)s --mem 1G --lines 1 --maxjob %(watchdog_maxjob)s %(stepshell)s && echo "finish step0 at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`"\n'''\
+		%{'watchdog':watchdog,'stepshell':step0shell, 'watchdog_maxjob': watchdog_maxjob})
+	script.write('''echo "start step1  at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`" && perl %(watchdog)s --mem 1G --lines 1 --maxjob %(watchdog_maxjob)s %(stepshell)s && echo "finish step1 at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`"\n'''\
+		%{'watchdog':watchdog,'stepshell':step1shell, 'watchdog_maxjob': watchdog_maxjob})
+	script.write('''echo "start step2  at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`" && perl %(watchdog)s --mem %(watchdog_mem)s --lines 2 --maxjob %(watchdog_maxjob)s %(stepshell)s && echo "finish step2 at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`"\n'''\
+		%{'watchdog':watchdog,'stepshell':step2shell, 'watchdog_mem': watchdog_mem, 'watchdog_maxjob': watchdog_maxjob})
+	script.write('''echo "start step3  at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`" && perl %(watchdog)s --mem 1G --lines 1 --maxjob %(watchdog_maxjob)s %(stepshell)s && echo "finish step3 at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`"\n'''\
+		%{'watchdog':watchdog,'stepshell':step3shell, 'watchdog_maxjob': watchdog_maxjob})
+	script.write('''echo "start step4  at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`" && perl %(watchdog)s --mem 1G --lines 1 --maxjob %(watchdog_maxjob)s %(stepshell)s && echo "finish step4 at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`"\n'''\
+		%{'watchdog':watchdog,'stepshell':step4shell, 'watchdog_maxjob': watchdog_maxjob})
+	script.write('''echo "start step5  at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`" && perl %(watchdog)s --mem 1G --lines 1 --maxjob %(watchdog_maxjob)s %(stepshell)s && echo "finish step5 at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`"\n'''\
+		%{'watchdog':watchdog,'stepshell':step5shell, 'watchdog_maxjob': watchdog_maxjob})
+	script.write('''echo "start step6  at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`" && perl %(watchdog)s --mem %(watchdog_mem)s --lines 13 --maxjob %(watchdog_maxjob)s %(stepshell)s && echo "finish step6 at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`"\n'''\
+		%{'watchdog':watchdog,'stepshell':step6shell, 'watchdog_mem': watchdog_mem, 'watchdog_maxjob': watchdog_maxjob})
+	script.write('''echo "start step7  at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`" && perl %(watchdog)s --mem 1G --lines 1 --maxjob %(watchdog_maxjob)s %(stepshell)s && echo "finish step7 at `date +'%%Y-%%m-%%d %%H:%%M:%%S %%z'`"\n'''\
+		%{'watchdog':watchdog,'stepshell':step7shell, 'watchdog_maxjob': watchdog_maxjob})
 	script.close()
 	return
 
@@ -301,6 +301,7 @@ if __name__ == '__main__':
 			subprj = value
 	file_json = open(jsonfile,'r')
 	jsonobj = json.load(file_json)
+	file_json.close()
 	rootpath = os.path.dirname(sys.path[0])
 	bin = rootpath + '/bin'
 	lib = rootpath + '/lib'
@@ -309,6 +310,17 @@ if __name__ == '__main__':
 
 	fqtype_p = jsonobj["FqType"]
 	fqtype = fqtype_p[0:2]
+		
+	watchdog_mem = None
+	watchdog_maxjob = None
+	try:
+		watchdog_mem = jsonobj["watchdog_mem"]
+	except:
+		watchdog_mem = "4G"
+	try:
+		watchdog_maxjob = jsonobj["watchdog_maxjob"]
+	except:
+		watchdog_maxjob = "12"
 
 	# tools
 	try:
@@ -425,7 +437,7 @@ if __name__ == '__main__':
 
 	finalshell = work_dir + "/main.sh"
 	if subprj == 'local':
-		MainShell(finalshell,shell_dir+ '/step0.GenerateData.sh',shell_dir+ '/step1.filter.sh',shell_dir+ '/step2.bwa.sh',shell_dir+ '/step3.bamdst.sh',shell_dir+ '/step4.CutPrimer.sh',shell_dir+ '/step5.statistic.sh',shell_dir+ '/step6.AlignVariant.sh',shell_dir+ '/step7.GetReport.sh')
+		MainShell(finalshell,shell_dir+ '/step0.GenerateData.sh',shell_dir+ '/step1.filter.sh',shell_dir+ '/step2.bwa.sh',shell_dir+ '/step3.bamdst.sh',shell_dir+ '/step4.CutPrimer.sh',shell_dir+ '/step5.statistic.sh',shell_dir+ '/step6.AlignVariant.sh',shell_dir+ '/step7.GetReport.sh', watchdog_mem, watchdog_maxjob)
 	elif subprj == 'qsubsge':
 		MainShell_qsubsge(finalshell,shell_dir+ '/step0.GenerateData.sh',shell_dir+ '/step1.filter.sh',shell_dir+ '/step2.bwa.sh',shell_dir+ '/step3.bamdst.sh',shell_dir+ '/step4.CutPrimer.sh',shell_dir+ '/step5.statistic.sh',shell_dir+ '/step6.AlignVariant.sh',shell_dir+ '/step7.GetReport.sh')
 	else:

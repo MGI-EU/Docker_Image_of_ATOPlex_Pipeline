@@ -22,7 +22,7 @@ RUN cpanm Term::ReadLine
 # Install Packages
 RUN apt-get install -qy software-properties-common build-essential
 RUN apt-get install -qy nano wget less screen rsync git
-RUN apt-get install -qy zlib1g-dev libbz2-dev liblzma-dev
+RUN apt-get install -qy zlib1g-dev libbz2-dev liblzma-dev libltdl-dev libltdl7
 
 # Configure Timezone
 RUN echo 'Europe/Stockholm' > /etc/timezone

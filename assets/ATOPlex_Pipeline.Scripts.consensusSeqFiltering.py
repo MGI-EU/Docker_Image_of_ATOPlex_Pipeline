@@ -45,7 +45,7 @@ def fastaFscan(faFile, filtedFafile, seqLen = 29000, nRatio = 0.05, ambiguousNuc
                 if seqProp[0] < seqLen or seqProp[1]/seqProp[0] > nRatio or seqProp[2] > ambiguousNucNum:
                     pass
                 else:
-                    _fqout.write("{}\n{}]\n".format(id, seq))
+                    _fqout.write("{}\n{}\n".format(id, seq))
                     idset.add(id.lstrip(">"))
                 id = line.rstrip()
                 seq = ""
@@ -57,7 +57,7 @@ def fastaFscan(faFile, filtedFafile, seqLen = 29000, nRatio = 0.05, ambiguousNuc
         if seqProp[0] < seqLen or seqProp[1]/seqProp[0] > nRatio or seqProp[2] > ambiguousNucNum:
             pass
         else:
-            _fqout.write("{}\n{}]n".format(id, seq))
+            _fqout.write("{}\n{}\n".format(id, seq))
             idset.add(id.lstrip(">"))
     return idset
 
